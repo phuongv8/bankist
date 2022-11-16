@@ -59,6 +59,7 @@
         </div>
       </div>
 
+      // TODO Move to under current balance, specify sort direction
       <div class="summary">
         <p class="summary-label">In</p>
         <p class="summary-value summary-value-in">0</p>
@@ -68,6 +69,51 @@
         <p class="summary-value summary-value-interest">0</p>
         <button class="btn-sort">&downarrow; SORT</button>
       </div>
+
+      <div class="operation operation-transfer">
+        <h2>Transfer money</h2>
+        <form class="form form-transfer">
+          <label for="transfer" class="form-label">Transfer to</label>
+          <input type="text" class="form-input form-input-to" id="transfer" />
+          <label for="amount" class="form-label">Amount</label>
+          <input
+            type="number"
+            class="form-input form-input-amount"
+            id="amount"
+          />
+          <button class="btn-form btn-form-transfer">&rarr;</button>
+        </form>
+      </div>
+
+      <div class="operation operation-loan">
+        <h2>Request loan</h2>
+        <form class="form form-loan">
+          <label for="loan" class="form-label form-label-loan">Amount</label>
+          <input type="number" class="form-input form-input-loan" id="loan" />
+          <button class="btn-form btn-form-loan">&rarr;</button>
+        </form>
+      </div>
+
+      <div class="operation operation-close">
+        <h2>Close account</h2>
+        <form class="form form-close">
+          <label for="user" class="form-label">Confirm username</label>
+          <input type="text" class="form-input form-input-user" id="user" />
+          <label for="password" class="form-label">Confirm password</label>
+          <input
+            type="password"
+            class="form-input form-input-password"
+            maxlength="4"
+            id="password"
+          />
+          <button class="btn-form btn-form-close">&rarr;</button>
+        </form>
+      </div>
+
+      <p class="logout-timer">
+        You will be logged out in <span class="timer">30:00</span>
+      </p>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
