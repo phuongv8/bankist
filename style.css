@@ -1,0 +1,66 @@
+/* TODO media queries, move logo to left side */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f3f3f3;
+  color: #444;
+  height: 100vh;
+  padding: 2rem;
+}
+
+/* Login */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 0 2rem; */
+}
+
+.welcome {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.logo {
+  height: 5rem;
+}
+
+.login {
+  display: flex;
+}
+
+.login-input {
+  /* border: none; */
+  font-size: 1.6rem;
+  font-family: inherit;
+  padding: 1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  border: 1px solid #fff;
+  width: 18rem;
+  transition: all 0.3s;
+}
+
+.login-input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.login-input::placeholder {
+  color: #bbb;
+}
+
+/* Main */
+.app {
+  display: none;
+}
