@@ -79,4 +79,55 @@ button a {
   color: inherit;
 }
 
-/* Main App */
+/* Main app layout */
+.app {
+  position: relative;
+  max-width: 100rem;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: auto repeat(3, 15rem) auto;
+  gap: 2rem;
+}
+
+/* Balance */
+.balance {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.balance-label {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.balance-date {
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.balance-value {
+  font-size: 2.8rem;
+  font-weight: 300;
+}
+
+/* Movements */
+.movements {
+  grid-row: 3 / 6;
+  background-color: cadetblue;
+}
+
+.summary {
+  grid-row: 2 / 3;
+  background-color: cornflowerblue;
+}
+
+.operation {
+  background-color: peachpuff;
+}
+
+.logout-timer {
+  background-color: darkseagreen;
+}
