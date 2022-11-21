@@ -41,7 +41,7 @@ nav {
 
 .welcome {
   font-size: 1.9rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .logo {
@@ -122,7 +122,7 @@ button a {
 }
 
 .balance-value {
-  font-size: 2.8rem;
+  font-size: 4rem;
   font-weight: 300;
 }
 
@@ -171,17 +171,27 @@ button a {
 }
 
 .movements-row {
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee;
   padding: 2rem 2rem;
   display: flex;
   align-items: center;
   font-size: 1.3rem;
   font-weight: 500;
+  text-transform: uppercase; */
+  border-bottom: 1px solid #eee;
+  padding: 2rem 4rem;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 500;
   text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 3fr;
+  gap: 2rem;
+  justify-items: start;
 }
 
 .movements-type {
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   color: #fff;
   padding: 0.1rem 1rem;
   border-radius: 10rem;
@@ -202,7 +212,7 @@ button a {
 .movement-value {
   margin-left: auto;
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 /* Operations */
@@ -210,7 +220,7 @@ button a {
   background-color: peachpuff;
   border-radius: 1rem;
   color: #333;
-  padding: 3rem 4rem;
+  padding: 3rem 5rem;
 }
 
 .operation-transfer {
@@ -225,9 +235,9 @@ button a {
 
 .form {
   display: grid;
-  grid-template-columns: repeat(2, 2.5fr) 1.5fr;
+  grid-template-columns: repeat(2, 2.5fr) 1fr;
   grid-template-rows: repeat(2, auto);
-  gap: 0.4rem 1rem;
+  gap: 0.8rem 1rem;
 }
 
 .form.form-loan {
@@ -236,7 +246,7 @@ button a {
 
 .form-label {
   grid-row: 2;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -248,7 +258,7 @@ button a {
   text-align: center;
   color: #333;
   width: 100%;
-  padding: 0.3rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 0.7rem;
   border: none;
 }
