@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="img/icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bankist</title>
+  </head>
+  <body>
+    <!-- TODO Separate log in page -->
+    <nav>
+      <p class="welcome">Welcome back, username</p>
+      <img src="img/logo.png" alt="Bankist logo" class="logo" />
+
+      <p><a href="index.html">Logout</a></p>
+      <button class="btn-login">&rarr;</button>
+    </nav>
+
+    <main class="app">
+      <div class="balance">
+        <div>
+          <p class="balance-label">Current balance</p>
+          <!-- TODO Replace with current date -->
+          <p class="balance-date">As of <span class="date">11/16/2022</span></p>
+        </div>
+        <p class="balance-value">$0</p>
+      </div>
+
+      <div class="movements">
+        <div class="movements-row">
+          <div class="movements-type movements-type-deposit">Deposit</div>
+          <div class="movement-date">11/11/2022</div>
+          <div class="movement-value">1000</div>
+        </div>
+
+        <div class="movements-row">
+          <div class="movements-type movements-type-withdrawal">Withdrawal</div>
+          <div class="movement-date">11/11/2022</div>
+          <div class="movement-value">-1000</div>
+        </div>
+      </div>
+
+      <!-- TODO Move to under current balance, specify sort direction -->
+      <div class="summary">
+        <p class="summary-label">In</p>
+        <p class="summary-value summary-value-in">0</p>
+        <p class="summary-label">Out</p>
+        <p class="summary-value summary-value-out">0</p>
+        <p class="summary-label">Interest</p>
+        <p class="summary-value summary-value-interest">0</p>
+        <button class="btn-sort">&downarrow; SORT</button>
+      </div>
+
+      <div class="operation operation-transfer">
+        <h2>Transfer money</h2>
+        <form class="form form-transfer">
+          <label for="transfer" class="form-label">Transfer to</label>
+          <input type="text" class="form-input form-input-to" id="transfer" />
+          <label for="amount" class="form-label">Amount</label>
+          <input
+            type="number"
+            class="form-input form-input-amount"
+            id="amount"
+          />
+          <button class="btn-form btn-form-transfer">&rarr;</button>
+        </form>
+      </div>
+
+      <div class="operation operation-loan">
+        <h2>Request loan</h2>
+        <form class="form form-loan">
+          <label for="loan" class="form-label form-label-loan">Amount</label>
+          <input type="number" class="form-input form-input-loan" id="loan" />
+          <button class="btn-form btn-form-loan">&rarr;</button>
+        </form>
+      </div>
+
+      <div class="operation operation-close">
+        <h2>Close account</h2>
+        <form class="form form-close">
+          <label for="user" class="form-label">User</label>
+          <input type="text" class="form-input form-input-user" id="user" />
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-input form-input-password"
+            maxlength="4"
+            id="password"
+          />
+          <button class="btn-form btn-form-close">&rarr;</button>
+        </form>
+      </div>
+
+      <!-- TODO Timer red at 5:00 -->
+      <p class="logout-timer">
+        You will be logged out in <span class="timer"> 30:00</span>
+      </p>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
