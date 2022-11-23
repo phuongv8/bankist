@@ -1,0 +1,30 @@
+{
+  "account1": {
+    "fullName": "Apple Pie",
+    "movements": [200, 450, -400, 3000, -650, -130, 70, 1300],
+    "interestRate": 1.2,
+    "user": "ap",
+    "password": 1111
+  },
+  "account2": {
+    "fullName": "Banana Chip",
+    "movements": [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+    "interestRate": 0.7,
+    "user": "bc",
+    "password": 1111
+  },
+  "account3": {
+    "fullName": "Coconut Milk",
+    "movements": [200, -200, 340, -300, -20, 50, 400, -460],
+    "interestRate": 0.5,
+    "user": "cm",
+    "password": 1111
+  },
+  "account4": {
+    "fullName": "Mango Juice",
+    "movements": [430, 1000, 700, 50, 90],
+    "interestRate": 1.5,
+    "user": "mj",
+    "password": 1111
+  }
+}
