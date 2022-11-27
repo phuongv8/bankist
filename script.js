@@ -27,3 +27,23 @@ const inputTransferAmount = document.querySelector(".form-input-amount");
 const inputLoanAmount = document.querySelector(".form-input-loan");
 const inputCloseUsername = document.querySelector(".form-input-user");
 const inputClosePassword = document.querySelector(".form-input-password");
+
+function displayMovements(movements) {
+  movementsContainer.innerHTML = "";
+
+  movements.forEach((move) => {
+    const type = move > 0 ? "deposit" : "withdrawal";
+
+    const html = `
+        <div class="movements-row">
+            <div class="movements-type movements-type-${type}">${type}</div>
+            <div class="movement-date">11/11/2022</div>
+            <div class="movement-value">${move}</div>
+        </div>
+        `;
+
+    movementsContainer.insertAdjacentHTML("afterbegin", html);
+  });
+}
+
+displayMovements(users.account1.movements);
