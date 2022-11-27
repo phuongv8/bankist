@@ -52,3 +52,7 @@ displayMovements(userMovements);
 
 const deposits = userMovements.filter((move) => move > 0);
 const withdrawals = userMovements.filter((move) => move < 0);
+const balance = userMovements.reduce((acc, cur) => {
+  return acc + cur;
+}, 0);
+balanceValue.textContent = `$${balance}`;
