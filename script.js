@@ -28,10 +28,12 @@ const inputLoanAmount = document.querySelector(".form-input-loan");
 const inputCloseUsername = document.querySelector(".form-input-user");
 const inputClosePassword = document.querySelector(".form-input-password");
 
+const userMovements = users.account1.movements;
+
 function displayMovements(movements) {
   movementsContainer.innerHTML = "";
 
-  movements.forEach((move) => {
+  movements.map((move) => {
     const type = move > 0 ? "deposit" : "withdrawal";
 
     const html = `
@@ -46,4 +48,7 @@ function displayMovements(movements) {
   });
 }
 
-displayMovements(users.account1.movements);
+displayMovements(userMovements);
+
+const deposits = userMovements.filter((move) => move > 0);
+const withdrawals = userMovements.filter((move) => move < 0);
