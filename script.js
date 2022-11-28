@@ -47,12 +47,34 @@ function displayMovements(movements) {
     movementsContainer.insertAdjacentHTML("afterbegin", html);
   });
 }
-
 displayMovements(userMovements);
 
-const deposits = userMovements.filter((move) => move > 0);
-const withdrawals = userMovements.filter((move) => move < 0);
-const balance = userMovements.reduce((acc, cur) => {
-  return acc + cur;
-}, 0);
-balanceValue.textContent = `$${balance}`;
+function displayTotalBalance(movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  balanceValue.textContent = `$${balance}`;
+}
+displayTotalBalance(userMovements);
+
+function displaySummary(movements) {
+  const deposits = movements
+    .filter((move) => move > 0)
+    .reduce((acc, cur) => acc + cur, 0);
+
+  const withdrawals = movements
+    .filter((move) => move < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+
+  const interest = movements
+    .filter((move) => move > 0)
+    .map((deposit) => (deposit * 3) / 100)
+    .reduce((acc, cur) => acc + cur, 0);
+
+  summaryIn.textContent = `$${deposits}`;
+  summaryOut.textContent = `$${Math.abs(withdrawals)}`;
+  summaryInterest.textContent = `$${interest}`;
+}
+displaySummary(userMovements);
+
+// const max = userMovements.reduce((acc, cur) => {
+//   return acc > cur ? acc : cur;
+// }, userMovements[0]);
