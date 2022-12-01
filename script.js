@@ -1,7 +1,5 @@
 "use strict";
 
-import users from "./users.json" assert { type: "json" };
-
 const appContainer = document.querySelector(".app");
 const movementsContainer = document.querySelector(".movements");
 
@@ -28,7 +26,33 @@ const inputLoanAmount = document.querySelector(".form-input-loan");
 const inputCloseUsername = document.querySelector(".form-input-user");
 const inputClosePassword = document.querySelector(".form-input-password");
 
-const userMovements = users.account1.movements;
+const account1 = {
+  fullName: "Apple Pie",
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  username: "ap",
+  password: 1111,
+};
+const account2 = {
+  fullName: "Banana Chip",
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  username: "bc",
+  password: 2222,
+};
+const account3 = {
+  fullName: "Coconut Milk",
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  username: "cm",
+  password: 3333,
+};
+const account4 = {
+  fullName: "Mango Juice",
+  movements: [430, 1000, 700, 50, 90],
+  username: "mj",
+  password: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+const userMovements = account1.movements;
 
 function displayMovements(movements) {
   movementsContainer.innerHTML = "";
@@ -78,3 +102,5 @@ displaySummary(userMovements);
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
 // }, userMovements[0]);
+
+// console.log(currentAccount);

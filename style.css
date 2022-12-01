@@ -111,6 +111,7 @@ button a {
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto auto repeat(3, 15rem);
   gap: 2rem;
+  opacity: 0;
 }
 
 /* Balance */
