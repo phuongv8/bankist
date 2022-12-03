@@ -52,7 +52,8 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-const userMovements = account1.movements;
+
+let userMovements = account1.movements;
 let currentAccount;
 
 function displayMovements(movements) {
@@ -72,13 +73,11 @@ function displayMovements(movements) {
     movementsContainer.insertAdjacentHTML("afterbegin", html);
   });
 }
-displayMovements(userMovements);
 
 function displayTotalBalance(movements) {
   const balance = movements.reduce((acc, cur) => acc + cur, 0);
   balanceValue.textContent = `$${balance}`;
 }
-displayTotalBalance(userMovements);
 
 function displaySummary(movements) {
   const deposits = movements
@@ -96,9 +95,8 @@ function displaySummary(movements) {
 
   summaryIn.textContent = `$${deposits}`;
   summaryOut.textContent = `$${Math.abs(withdrawals)}`;
-  summaryInterest.textContent = `$${interest}`;
+  summaryInterest.textContent = `$${interest.toFixed(2)}`;
 }
-displaySummary(userMovements);
 
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault(); // prevent submitting form
@@ -109,6 +107,9 @@ btnLogin.addEventListener("click", function (e) {
 
   if (currentAccount?.password === Number(inputLoginPassword.value)) {
     appContainer.style.opacity = 1;
+    welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
+    inputLoginPassword.value = "";
+    inputLoginUsername.value = "";
   }
 });
 
