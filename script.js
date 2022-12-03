@@ -53,6 +53,7 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 const userMovements = account1.movements;
+let currentAccount;
 
 function displayMovements(movements) {
   movementsContainer.innerHTML = "";
@@ -98,6 +99,18 @@ function displaySummary(movements) {
   summaryInterest.textContent = `$${interest}`;
 }
 displaySummary(userMovements);
+
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault(); // prevent submitting form
+
+  currentAccount = accounts.find(
+    (account) => account.username === inputLoginUsername.value
+  );
+
+  if (currentAccount?.password === Number(inputLoginPassword.value)) {
+    appContainer.style.opacity = 1;
+  }
+});
 
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
