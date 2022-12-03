@@ -110,6 +110,11 @@ btnLogin.addEventListener("click", function (e) {
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
     inputLoginPassword.value = "";
     inputLoginUsername.value = "";
+
+    userMovements = currentAccount.movements;
+    displayMovements(userMovements);
+    displayTotalBalance(userMovements);
+    displaySummary(userMovements);
   }
 });
 
