@@ -98,7 +98,7 @@ function displaySummary(movements) {
   summaryInterest.textContent = `$${interest.toFixed(2)}`;
 }
 
-btnLogin.addEventListener("click", function (e) {
+function login(e) {
   e.preventDefault(); // prevent submitting form
 
   currentAccount = accounts.find(
@@ -116,7 +116,9 @@ btnLogin.addEventListener("click", function (e) {
     displayTotalBalance(userMovements);
     displaySummary(userMovements);
   }
-});
+}
+
+btnLogin.addEventListener("click", login);
 
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
