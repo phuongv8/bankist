@@ -105,6 +105,7 @@ function login(e) {
     (account) => account.username === inputLoginUsername.value
   );
 
+  // if currentAccount exist, check password
   if (currentAccount?.password === Number(inputLoginPassword.value)) {
     appContainer.style.opacity = 1;
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
@@ -118,8 +119,19 @@ function login(e) {
   }
 }
 
-btnLogin.addEventListener("click", login);
+function transfer(e) {
+  e.preventDefault();
 
+  const amount = Number(inputTransferAmount.value);
+
+  let receiver = accounts.find((acc) => acc.fullName === inputTransferTo.value);
+  console.log("before", receiver);
+  receiver?.movements.push(amount);
+  console.log("after", receiver);
+}
+
+btnLogin.addEventListener("click", login);
+btnTransfer.addEventListener("click", transfer);
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
 // }, userMovements[0]);
