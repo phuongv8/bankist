@@ -116,9 +116,7 @@ function login(e) {
   if (currentAccount?.password === Number(inputLoginPassword.value)) {
     appContainer.style.opacity = 1;
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
-    inputLoginPassword.value = "";
-    inputLoginUsername.value = "";
-
+    inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
   }
 }
@@ -130,6 +128,7 @@ function transfer(e) {
   const receiver = accounts.find(
     (account) => account.fullName === inputTransferTo.value
   );
+  inputTransferAmount.value = inputTransferTo.value = "";
 
   if (
     receiver &&
@@ -138,7 +137,7 @@ function transfer(e) {
     receiver.username != currentAccount.username
   ) {
     receiver.movements.push(amount);
-    currentAccount.movements.push(0 - amount);
+    currentAccount.movements.push(-amount);
     updateUI(currentAccount);
   } else {
     console.log("error");
