@@ -55,6 +55,7 @@ const accounts = [account1, account2, account3, account4];
 
 let userMovements = account1.movements;
 let currentAccount;
+let balance;
 
 function displayMovements(movements) {
   movementsContainer.innerHTML = "";
@@ -75,7 +76,7 @@ function displayMovements(movements) {
 }
 
 function displayTotalBalance(movements) {
-  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  balance = movements.reduce((acc, cur) => acc + cur, 0);
   balanceValue.textContent = `$${balance}`;
 }
 
@@ -123,11 +124,29 @@ function transfer(e) {
   e.preventDefault();
 
   const amount = Number(inputTransferAmount.value);
+  const receiver = accounts.find(
+    (account) => account.fullName === inputTransferTo.value
+  );
 
-  let receiver = accounts.find((acc) => acc.fullName === inputTransferTo.value);
-  console.log("before", receiver);
-  receiver?.movements.push(amount);
-  console.log("after", receiver);
+  if (
+    receiver &&
+    amount > 0 &&
+    balance >= amount &&
+    receiver.username != currentAccount.username
+  ) {
+    receiver.movements.push(amount);
+    console.log(receiver);
+    currentAccount.movements.push(0 - amount);
+    userMovements = currentAccount.movements;
+
+    console.log("userMovements", userMovements);
+
+    displayMovements(userMovements);
+    displayTotalBalance(userMovements);
+    displaySummary(userMovements);
+  } else {
+    console.log("error");
+  }
 }
 
 btnLogin.addEventListener("click", login);
