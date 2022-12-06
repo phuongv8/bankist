@@ -99,6 +99,13 @@ function displaySummary(movements) {
   summaryInterest.textContent = `$${interest.toFixed(2)}`;
 }
 
+function updateUI(account) {
+  userMovements = account.movements;
+  displayMovements(userMovements);
+  displayTotalBalance(userMovements);
+  displaySummary(userMovements);
+}
+
 function login(e) {
   e.preventDefault(); // prevent submitting form
 
@@ -113,10 +120,7 @@ function login(e) {
     inputLoginPassword.value = "";
     inputLoginUsername.value = "";
 
-    userMovements = currentAccount.movements;
-    displayMovements(userMovements);
-    displayTotalBalance(userMovements);
-    displaySummary(userMovements);
+    updateUI(currentAccount);
   }
 }
 
@@ -135,15 +139,8 @@ function transfer(e) {
     receiver.username != currentAccount.username
   ) {
     receiver.movements.push(amount);
-    console.log(receiver);
     currentAccount.movements.push(0 - amount);
-    userMovements = currentAccount.movements;
-
-    console.log("userMovements", userMovements);
-
-    displayMovements(userMovements);
-    displayTotalBalance(userMovements);
-    displaySummary(userMovements);
+    updateUI(currentAccount);
   } else {
     console.log("error");
   }
