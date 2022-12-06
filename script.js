@@ -55,7 +55,6 @@ const accounts = [account1, account2, account3, account4];
 
 let userMovements = account1.movements;
 let currentAccount;
-let balance;
 
 function displayMovements(movements) {
   movementsContainer.innerHTML = "";
@@ -75,9 +74,9 @@ function displayMovements(movements) {
   });
 }
 
-function displayTotalBalance(movements) {
-  balance = movements.reduce((acc, cur) => acc + cur, 0);
-  balanceValue.textContent = `$${balance}`;
+function displayTotalBalance(account) {
+  account.balance = account.movements.reduce((acc, cur) => acc + cur, 0);
+  balanceValue.textContent = `$${account.balance}`;
 }
 
 function displaySummary(movements) {
@@ -102,7 +101,7 @@ function displaySummary(movements) {
 function updateUI(account) {
   userMovements = account.movements;
   displayMovements(userMovements);
-  displayTotalBalance(userMovements);
+  displayTotalBalance(account);
   displaySummary(userMovements);
 }
 
@@ -135,7 +134,7 @@ function transfer(e) {
   if (
     receiver &&
     amount > 0 &&
-    balance >= amount &&
+    currentAccount.balance >= amount &&
     receiver.username != currentAccount.username
   ) {
     receiver.movements.push(amount);
