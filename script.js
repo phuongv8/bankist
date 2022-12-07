@@ -118,6 +118,7 @@ function login(e) {
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
   } else {
+    // TODO Error message
     console.log("wrong username or password/account does not exist");
   }
 }
@@ -141,6 +142,7 @@ function transfer(e) {
     currentAccount.movements.push(-amount);
     updateUI(currentAccount);
   } else {
+    // TODO Error message
     console.log("error");
   }
 }
@@ -148,8 +150,8 @@ function transfer(e) {
 function closeAccount(e) {
   e.preventDefault();
   if (
-    currentAccount.username == inputCloseUsername.value &&
-    currentAccount.password == inputClosePassword.value
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.password === Number(inputClosePassword.value)
   ) {
     // remove matched account from accounts array
     // filter any account that does not match account.username?
@@ -160,8 +162,10 @@ function closeAccount(e) {
     // hide UI
     appContainer.style.opacity = 0;
   } else {
+    // TODO Error message
     console.log("not match");
   }
+  inputCloseUsername.value = inputClosePassword.value = "";
 }
 
 btnLogin.addEventListener("click", login);
