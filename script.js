@@ -51,9 +51,8 @@ const account4 = {
   password: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
-
-let userMovements = account1.movements;
+let accounts = [account1, account2, account3, account4];
+let userMovements;
 let currentAccount;
 
 function displayMovements(movements) {
@@ -118,6 +117,8 @@ function login(e) {
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
+  } else {
+    console.log("wrong username or password/account does not exist");
   }
 }
 
@@ -144,8 +145,28 @@ function transfer(e) {
   }
 }
 
+function closeAccount(e) {
+  e.preventDefault();
+  if (
+    currentAccount.username == inputCloseUsername.value &&
+    currentAccount.password == inputClosePassword.value
+  ) {
+    // remove matched account from accounts array
+    // filter any account that does not match account.username?
+    accounts = accounts.filter(
+      (account) => account.username !== currentAccount.username
+    );
+    console.log(accounts);
+    // hide UI
+    appContainer.style.opacity = 0;
+  } else {
+    console.log("not match");
+  }
+}
+
 btnLogin.addEventListener("click", login);
 btnTransfer.addEventListener("click", transfer);
+btnClose.addEventListener("click", closeAccount);
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
 // }, userMovements[0]);
