@@ -123,7 +123,7 @@ function login(e) {
   }
 }
 
-function transfer(e) {
+function transferMoney(e) {
   e.preventDefault();
 
   const amount = Number(inputTransferAmount.value);
@@ -147,19 +147,30 @@ function transfer(e) {
   }
 }
 
+// TODO Loan tag separate from deposit (curr prob: users can keep requesting loan)
+function requestLoan(e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.balance >= amount * 3.5) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  } else {
+    // TODO Error message
+    console.log("error");
+  }
+  inputLoanAmount.value = "";
+}
+
 function closeAccount(e) {
   e.preventDefault();
   if (
     currentAccount.username === inputCloseUsername.value &&
     currentAccount.password === Number(inputClosePassword.value)
   ) {
-    // remove matched account from accounts array
-    // filter any account that does not match account.username?
     accounts = accounts.filter(
       (account) => account.username !== currentAccount.username
     );
     console.log(accounts);
-    // hide UI
     appContainer.style.opacity = 0;
   } else {
     // TODO Error message
@@ -169,7 +180,8 @@ function closeAccount(e) {
 }
 
 btnLogin.addEventListener("click", login);
-btnTransfer.addEventListener("click", transfer);
+btnTransfer.addEventListener("click", transferMoney);
+btnLoan.addEventListener("click", requestLoan);
 btnClose.addEventListener("click", closeAccount);
 // const max = userMovements.reduce((acc, cur) => {
 //   return acc > cur ? acc : cur;
