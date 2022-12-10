@@ -179,12 +179,16 @@ function closeAccount(e) {
   inputCloseUsername.value = inputClosePassword.value = "";
 }
 
+function sortMovements() {
+  console.log("curr move", currentAccount.movements);
+  currentAccount.movements.sort((a, b) => {
+    return a > b ? 1 : -1;
+  });
+  console.log("sort move", currentAccount.movements);
+}
+
 btnLogin.addEventListener("click", login);
 btnTransfer.addEventListener("click", transferMoney);
 btnLoan.addEventListener("click", requestLoan);
 btnClose.addEventListener("click", closeAccount);
-// const max = userMovements.reduce((acc, cur) => {
-//   return acc > cur ? acc : cur;
-// }, userMovements[0]);
-
-// console.log(currentAccount);
+btnSort.addEventListener("click", sortMovements);
