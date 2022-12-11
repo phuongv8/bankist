@@ -54,6 +54,7 @@ const account4 = {
 let accounts = [account1, account2, account3, account4];
 let userMovements;
 let currentAccount;
+let sorted = false;
 
 function displayMovements(movements, sorted = false) {
   movementsContainer.innerHTML = "";
@@ -181,8 +182,10 @@ function closeAccount(e) {
   inputCloseUsername.value = inputClosePassword.value = "";
 }
 
-function sortMovements() {
-  displayMovements(currentAccount.movements, true);
+function sortMovements(e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 }
 
 btnLogin.addEventListener("click", login);
