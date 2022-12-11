@@ -55,10 +55,12 @@ let accounts = [account1, account2, account3, account4];
 let userMovements;
 let currentAccount;
 
-function displayMovements(movements) {
+function displayMovements(movements, sorted = false) {
   movementsContainer.innerHTML = "";
 
-  movements.map((move) => {
+  const allMoves = sorted ? movements.slice().sort((a, b) => a - b) : movements;
+
+  allMoves.map((move) => {
     const type = move > 0 ? "deposit" : "withdrawal";
 
     const html = `
@@ -180,11 +182,7 @@ function closeAccount(e) {
 }
 
 function sortMovements() {
-  console.log("curr move", currentAccount.movements);
-  currentAccount.movements.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
-  console.log("sort move", currentAccount.movements);
+  displayMovements(currentAccount.movements, true);
 }
 
 btnLogin.addEventListener("click", login);
