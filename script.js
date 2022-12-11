@@ -68,7 +68,7 @@ function displayMovements(movements, sorted = false) {
         <div class="movements-row">
             <div class="movements-type movements-type-${type}">${type}</div>
             <div class="movement-date">11/11/2022</div>
-            <div class="movement-value">${move}</div>
+            <div class="movement-value">${move.toFixed(2)}</div>
         </div>
         `;
 
@@ -78,7 +78,7 @@ function displayMovements(movements, sorted = false) {
 
 function displayTotalBalance(account) {
   account.balance = account.movements.reduce((acc, cur) => acc + cur, 0);
-  balanceValue.textContent = `$${account.balance}`;
+  balanceValue.textContent = `$${account.balance.toFixed(2)}`;
 }
 
 function displaySummary(movements) {
@@ -95,8 +95,8 @@ function displaySummary(movements) {
     .map((deposit) => (deposit * 3) / 100)
     .reduce((acc, cur) => acc + cur, 0);
 
-  summaryIn.textContent = `$${deposits}`;
-  summaryOut.textContent = `$${Math.abs(withdrawals)}`;
+  summaryIn.textContent = `$${deposits.toFixed(2)}`;
+  summaryOut.textContent = `$${Math.abs(withdrawals).toFixed(2)}`;
   summaryInterest.textContent = `$${interest.toFixed(2)}`;
 }
 
