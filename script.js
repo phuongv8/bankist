@@ -85,10 +85,12 @@ currentAccount = account1;
 updateUI(currentAccount);
 appContainer.style.opacity = 100;
 
-function displayMovements(movements, sorted = false) {
+function displayMovements(account, sorted = false) {
   movementsContainer.innerHTML = "";
 
-  const allMoves = sorted ? movements.slice().sort((a, b) => a - b) : movements;
+  const allMoves = sorted
+    ? account.movements.slice().sort((a, b) => a - b)
+    : account.movements;
 
   allMoves.map((move) => {
     const type = move > 0 ? "deposit" : "withdrawal";
@@ -110,7 +112,8 @@ function displayTotalBalance(account) {
   balanceValue.textContent = `$${account.balance.toFixed(2)}`;
 }
 
-function displaySummary(movements) {
+function displaySummary(account) {
+  let movements = account.movements;
   const deposits = movements
     .filter((move) => move > 0)
     .reduce((acc, cur) => acc + cur, 0);
@@ -130,10 +133,9 @@ function displaySummary(movements) {
 }
 
 function updateUI(account) {
-  userMovements = account.movements;
-  displayMovements(userMovements);
+  displayMovements(account);
   displayTotalBalance(account);
-  displaySummary(userMovements);
+  displaySummary(account);
 }
 
 function login(e) {
@@ -221,7 +223,7 @@ function closeAccount(e) {
 
 function sortMovements(e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 }
 
