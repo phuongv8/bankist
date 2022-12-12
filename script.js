@@ -188,6 +188,9 @@ function transferMoney(e) {
   ) {
     receiver.movements.push(amount);
     currentAccount.movements.push(-amount);
+
+    receiver.movementsDates.push(new Date().toISOString());
+    currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
   } else {
     // TODO Error message
@@ -201,6 +204,7 @@ function requestLoan(e) {
   const amount = Number(inputLoanAmount.value);
   if (amount > 0 && currentAccount.balance >= amount * 3.5) {
     currentAccount.movements.push(amount);
+    currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
   } else {
     // TODO Error message
