@@ -92,13 +92,19 @@ function displayMovements(account, sorted = false) {
     ? account.movements.slice().sort((a, b) => a - b)
     : account.movements;
 
-  allMoves.map((move) => {
+  allMoves.map((move, i) => {
     const type = move > 0 ? "deposit" : "withdrawal";
+
+    const date = new Date(account.movementsDates[i]);
+    const day = `${date.getDate()}`.padStart(2, 0); // print format: 02/08/2022
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    const displayDate = `${month}/${day}/${year}`;
 
     const html = `
         <div class="movements-row">
             <div class="movements-type movements-type-${type}">${type}</div>
-            <div class="movement-date">11/11/2022</div>
+            <div class="movement-date">${displayDate}</div>
             <div class="movement-value">${move.toFixed(2)}</div>
         </div>
         `;
