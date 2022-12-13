@@ -107,7 +107,6 @@ function displayMovements(account, sorted = false) {
 
     const date = new Date(account.movementsDates[i]);
     const displayDate = formatDate(date);
-    console.log("displayDate", displayDate);
 
     const html = `
         <div class="movements-row">
@@ -165,14 +164,23 @@ function login(e) {
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
-
     const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0); // print format: 02/08/2022
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const min = `${now.getMinutes()}`.padStart(2, 0);
-    dateLabel.textContent = `${month}/${day}/${year}, ${hour}:${min}`;
+    const options = {
+      hour: "numeric",
+      minute: "numeric",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    const locale = navigator.language; // based on language in your browser
+    dateLabel.textContent =
+      new Intl.DateTimeFormat(locale, {
+        dateStyle: "long",
+      }).format(now) +
+      " at " +
+      new Intl.DateTimeFormat(locale, {
+        timeStyle: "short",
+      }).format(now);
   } else {
     // TODO Error message
     console.log("wrong username or password/account does not exist");
