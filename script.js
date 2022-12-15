@@ -94,7 +94,10 @@ function formatDate(date) {
 }
 
 function formatCurrency(move) {
-  return new Intl.NumberFormat(locale).format(move);
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: "USD",
+  }).format(move);
 }
 
 function displayMovements(account, sorted = false) {
@@ -115,7 +118,7 @@ function displayMovements(account, sorted = false) {
         <div class="movements-row">
             <div class="movements-type movements-type-${type}">${type}</div>
             <div class="movement-date">${displayDate}</div>
-            <div class="movement-value">$${formattedMovements}</div>
+            <div class="movement-value">${formattedMovements}</div>
         </div>
         `;
 
@@ -125,7 +128,7 @@ function displayMovements(account, sorted = false) {
 
 function displayTotalBalance(account) {
   account.balance = account.movements.reduce((acc, cur) => acc + cur, 0);
-  balanceValue.textContent = `$${account.balance.toFixed(2)}`;
+  balanceValue.textContent = formatCurrency(account.balance);
 }
 
 function displaySummary(account) {
