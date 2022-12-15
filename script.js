@@ -81,7 +81,7 @@ let currentAccount;
 let sorted = false;
 const locale = navigator.language; // based on language in your browser
 
-const formatDate = function (date) {
+function formatDate(date) {
   const dayPassed = Math.round(
     Math.abs(new Date() - date) / (1000 * 60 * 60 * 24)
   );
@@ -91,7 +91,11 @@ const formatDate = function (date) {
   else {
     return new Intl.DateTimeFormat(locale).format(date);
   }
-};
+}
+
+function formatCurrency(move) {
+  return new Intl.NumberFormat(locale).format(move);
+}
 
 function displayMovements(account, sorted = false) {
   movementsContainer.innerHTML = "";
@@ -105,12 +109,13 @@ function displayMovements(account, sorted = false) {
 
     const date = new Date(account.movementsDates[i]);
     const displayDate = formatDate(date);
+    const formattedMovements = formatCurrency(Math.abs(move));
 
     const html = `
         <div class="movements-row">
             <div class="movements-type movements-type-${type}">${type}</div>
             <div class="movement-date">${displayDate}</div>
-            <div class="movement-value">${move.toFixed(2)}</div>
+            <div class="movement-value">$${formattedMovements}</div>
         </div>
         `;
 
