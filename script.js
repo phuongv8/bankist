@@ -146,9 +146,9 @@ function displaySummary(account) {
     .map((deposit) => (deposit * 3) / 100)
     .reduce((acc, cur) => acc + cur, 0);
 
-  summaryIn.textContent = `$${deposits.toFixed(2)}`;
-  summaryOut.textContent = `$${Math.abs(withdrawals).toFixed(2)}`;
-  summaryInterest.textContent = `$${interest.toFixed(2)}`;
+  summaryIn.textContent = formatCurrency(deposits);
+  summaryOut.textContent = formatCurrency(Math.abs(deposits));
+  summaryInterest.textContent = formatCurrency(interest);
 }
 
 function updateUI(account) {
