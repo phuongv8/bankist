@@ -112,7 +112,7 @@ function displayMovements(account, sorted = false) {
 
     const date = new Date(account.movementsDates[i]);
     const displayDate = formatDate(date);
-    const formattedMovements = formatCurrency(Math.abs(move));
+    const formattedMovements = formatCurrency(move);
 
     const html = `
         <div class="movements-row">
