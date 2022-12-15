@@ -171,6 +171,10 @@ function login(e) {
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
+
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
+
     startLogoutTimer();
     const now = new Date();
     const options = {
