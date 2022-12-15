@@ -79,6 +79,7 @@ let accounts = [account1, account2, account3];
 let userMovements;
 let currentAccount;
 let sorted = false;
+const locale = navigator.language; // based on language in your browser
 
 const formatDate = function (date) {
   const dayPassed = Math.round(
@@ -88,10 +89,7 @@ const formatDate = function (date) {
   if (dayPassed == 0) return "Today";
   else if (dayPassed <= 7) return `${dayPassed} days ago`;
   else {
-    const day = `${date.getDate()}`.padStart(2, 0); // print format: 02/08/2022
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    return new Intl.DateTimeFormat(locale).format(date);
   }
 };
 
@@ -172,7 +170,7 @@ function login(e) {
       month: "2-digit",
       year: "numeric",
     };
-    const locale = navigator.language; // based on language in your browser
+
     dateLabel.textContent =
       new Intl.DateTimeFormat(locale, {
         dateStyle: "long",
