@@ -79,6 +79,7 @@ let accounts = [account1, account2, account3];
 let userMovements;
 let currentAccount;
 let sorted = false;
+let timer;
 const locale = navigator.language; // based on language in your browser
 
 function formatDate(date) {
@@ -170,6 +171,7 @@ function login(e) {
     welcomeLabel.textContent = `Welcome back, ${currentAccount.fullName}`;
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
+    startLogoutTimer();
     const now = new Date();
     const options = {
       hour: "numeric",
@@ -257,6 +259,27 @@ function sortMovements(e) {
   e.preventDefault();
   displayMovements(currentAccount, !sorted);
   sorted = !sorted;
+}
+
+function startLogoutTimer() {
+  function tick() {
+    const minute = String(Math.trunc(time / 60)).padStart(2, 0);
+    const second = String(time % 60).padStart(2, 0);
+    timerLabel.textContent = `${minute}:${second}`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      appContainer.style.opacity = 0;
+      welcomeLabel.textContent = "Log in to get started";
+    }
+
+    time--;
+  }
+  let time = 600;
+  tick();
+  const timer = setInterval(tick, 1000); // 1s
+
+  // TODO reset timer to stay logged in
 }
 
 btnLogin.addEventListener("click", login);
