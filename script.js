@@ -101,6 +101,11 @@ function formatCurrency(move) {
   }).format(move);
 }
 
+function resetTimer() {
+  clearInterval(timer);
+  timer = startLogoutTimer();
+}
+
 function displayMovements(account, sorted = false) {
   movementsContainer.innerHTML = "";
 
@@ -172,8 +177,7 @@ function login(e) {
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
 
-    clearInterval(timer);
-    timer = startLogoutTimer();
+    resetTimer();
 
     const now = new Date();
 
@@ -213,8 +217,7 @@ function transferMoney(e) {
     currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
 
-    clearInterval(timer);
-    timer = startLogoutTimer();
+    resetTimer();
   } else {
     // TODO Error message
     console.log("error");
@@ -230,8 +233,7 @@ function requestLoan(e) {
     currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
 
-    clearInterval(timer);
-    timer = startLogoutTimer();
+    resetTimer();
   } else {
     // TODO Error message
     console.log("error");
