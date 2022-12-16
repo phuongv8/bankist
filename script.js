@@ -172,7 +172,7 @@ function login(e) {
     inputLoginPassword.value = inputLoginUsername.value = "";
     updateUI(currentAccount);
 
-    if (timer) clearInterval(timer);
+    clearInterval(timer);
     timer = startLogoutTimer();
 
     const now = new Date();
@@ -212,6 +212,9 @@ function transferMoney(e) {
     receiver.movementsDates.push(new Date().toISOString());
     currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
+
+    clearInterval(timer);
+    timer = startLogoutTimer();
   } else {
     // TODO Error message
     console.log("error");
@@ -226,6 +229,9 @@ function requestLoan(e) {
     currentAccount.movements.push(amount);
     currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
+
+    clearInterval(timer);
+    timer = startLogoutTimer();
   } else {
     // TODO Error message
     console.log("error");
