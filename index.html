@@ -21,6 +21,7 @@
       <!-- TODO Hide when user is logged in -->
       <!-- TODO Check: empty input, invalid input -->
       <!-- TODO Log in on enter -->
+      <!-- TODO Logout button -->
       <form class="login">
         <input
           type="text"
@@ -74,6 +75,15 @@
         </div>
       </div>
 
+      <div class="operation operation-loan">
+        <h2>Request loan</h2>
+        <form class="form form-loan">
+          <label for="loan" class="form-label form-label-loan">Amount</label>
+          <input type="number" class="form-input form-input-loan" id="loan" />
+          <button class="btn-form btn-form-loan">&rarr;</button>
+        </form>
+      </div>
+
       <div class="operation operation-transfer">
         <h2>Transfer money</h2>
         <form class="form form-transfer">
@@ -86,15 +96,6 @@
             id="amount"
           />
           <button class="btn-form btn-form-transfer">&rarr;</button>
-        </form>
-      </div>
-
-      <div class="operation operation-loan">
-        <h2>Request loan</h2>
-        <form class="form form-loan">
-          <label for="loan" class="form-label form-label-loan">Amount</label>
-          <input type="number" class="form-input form-input-loan" id="loan" />
-          <button class="btn-form btn-form-loan">&rarr;</button>
         </form>
       </div>
 
