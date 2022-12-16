@@ -175,15 +175,7 @@ function login(e) {
     if (timer) clearInterval(timer);
     timer = startLogoutTimer();
 
-    startLogoutTimer();
     const now = new Date();
-    const options = {
-      hour: "numeric",
-      minute: "numeric",
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    };
 
     dateLabel.textContent =
       new Intl.DateTimeFormat(locale, {
@@ -282,6 +274,8 @@ function startLogoutTimer() {
   let time = 600;
   tick();
   const timer = setInterval(tick, 1000); // 1s
+
+  return timer;
 
   // TODO reset timer to stay logged in
 }
