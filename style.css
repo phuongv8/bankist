@@ -119,7 +119,7 @@ button a {
   grid-column: 1 / span 2;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 0.2rem;
 }
 
 .balance-label {
@@ -210,6 +210,7 @@ button a {
 
 .movement-date {
   color: #666;
+  font-size: 1.2rem;
 }
 
 .movement-value {
