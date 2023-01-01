@@ -1,4 +1,3 @@
-# About
 Vanilla Javascript project to learn about arays, numbers, dates, and timers.
 ## Demo
 ## Screenshot
